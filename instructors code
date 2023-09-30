@@ -1,0 +1,22 @@
+#include<bits/stdc++.h>
+using namespace std;
+pair<int, int> closestSum(vector<int> arr, int x) {
+    int s=0,e=arr.size()-1;
+    int diff=INT_MAX;
+    int leftIdx,rightIdx;
+    while(s<e){
+        int cs=arr[s]+arr[e];
+        if (abs(cs-x)<diff){
+            leftIdx=s;
+            rightIdx=e;
+            diff=abs(cs-x);
+        }
+        if (cs>x){
+            e--;
+        }
+        else{
+            s++;
+        }
+    }
+    return {arr[leftIdx],arr[rightIdx]};
+}
